@@ -1,0 +1,21 @@
+name: Github Actions Test
+
+on workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    #ddd
+    - uses: actions/checkout@v2
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT" 
+    - name: step hello
+      run: |
+        echo hello
+        
+    - name: create artifacts
+      run: echo artifacts
+      if: github.event_name == 'push' && ( github.ref == 'refs/heads/master' || github.ref == 'refs/heads/devel' )
