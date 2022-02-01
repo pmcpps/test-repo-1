@@ -1,6 +1,6 @@
 name: Github Actions Test
 
-on workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
       run: echo "$GITHUB_CONTEXT" 
     - name: step hello
       run: |
-        echo hello
+        echo hello world!
         
     - name: create artifacts
       run: echo artifacts
