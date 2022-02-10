@@ -11,7 +11,8 @@ jobs:
     - name: Set tag var
       id: vars
       run: echo ::set-output name=docker_tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
-
+    - name: Print tag var
+      run: echo "${{ steps.vars.outputs.docker_tag }}"
     - name: Get git tag
       id: set_git_vars
       run: |
