@@ -9,6 +9,7 @@ jobs:
 
     - uses: actions/checkout@v2
     - name: Get git tag
+      id: set_git_vars
       run: |
         echo "::set-output name=GIT_TAG::$(git tag --points-at HEAD)"
         # id: set_git_vars
