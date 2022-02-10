@@ -1,6 +1,8 @@
 name: Github Actions Test
 
-on: workflow_dispatch
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
