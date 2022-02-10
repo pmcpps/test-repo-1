@@ -6,12 +6,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    #ddd
+
     - uses: actions/checkout@v2
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT" 
+    - name: Get git tag
+      run: |
+        echo "::set-output name=GIT_TAG::$(git tag --points-at HEAD)"
+        id: set_git_vars
+    - name: Print git tag
+      run: |
+        echo "${{ steps.set_git_vars.outputs.GIT_TAG }}"
+    
+    #- name: Dump GitHub context
+    #  env:
+    #    GITHUB_CONTEXT: ${{ toJson(github) }}
+    #  run: echo "$GITHUB_CONTEXT" 
     - name: step hello
       run: |
         echo hello world!
