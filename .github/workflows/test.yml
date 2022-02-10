@@ -8,6 +8,10 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
+    - name: Set tag var
+      id: vars
+      run: echo ::set-output name=docker_tag::$(echo ${GITHUB_REF} | cut -d'/' -f3)-${GITHUB_SHA}
+
     - name: Get git tag
       id: set_git_vars
       run: |
